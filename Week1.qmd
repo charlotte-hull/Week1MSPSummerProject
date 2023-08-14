@@ -1,0 +1,84 @@
+---
+title: "Mathematics Summer Projects: Week 1"
+author: "Charlotte Hull"
+format: html
+editor: visual
+---
+
+## Week 1
+
+### Mathematical expressions in LaTeX
+
+The Greek alphabet, for example, can be represented with [LaTeX](https://www.latex-project.org/).
+
+Characters such as $\theta$ , $\rho$ , $\beta$ and $\pi$ can be used.
+
+It can also be used to represent any equations or mathematical symbols required, as seen below:
+
+$$
+\int 2x \,dx = x^2 +C
+$$
+
+You can also use an integral with limits. Similar syntax can be used to display sums, products, limits, etc.
+
+$$
+\int_{0}^{\infty} x^2 \,dx
+$$
+
+### R & Python chunks
+
+Quarto can also support R and python code.
+
+This outputs the sum, using R.
+
+```{r}
+1+1
+```
+
+This summarizes the information within the dataset cars
+
+```{r}
+summary(cars)
+```
+
+You can also remove the `echo` so that the R code is not displayed, only the output. Here is the same data, without the code.
+
+```{r}
+#| echo: FALSE
+summary(cars)
+```
+
+You can also run python code using the reticulate package
+
+```{python}
+4+5
+```
+
+Below is the same plot, the first using the ggplot2 package (with some formatting), and the second using the standard plotting function in R.
+
+```{r}
+library(ggplot2)
+
+ggplot(cars, aes(x=speed, y=dist))+
+  geom_point(color = "#eb4034", size = 5)   
+```
+
+```{r}
+plot(cars)
+```
+
+Below is the same plot, the first using python code, and the second using R, using the music.csv data
+
+```{python}
+import pandas as pd 
+
+df=pd.read_csv('music.csv')
+df.plot.scatter(x='Year',y='Average_Rating', s=2)
+```
+
+```{r}
+library(ggplot2)
+df = read.csv('music.csv')
+ggplot(df, aes(x= Year, y= Average_Rating))+
+  geom_point(color = "#000000", size = 1)
+```
